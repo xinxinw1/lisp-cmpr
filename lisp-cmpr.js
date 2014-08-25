@@ -1,9 +1,14 @@
 /***** Lisp to JS Compiler Devel *****/
 
 /* require tools >= 3.0 */
-/* require lisp-parse */
+/* require prec-math */
+/* require ajax */
 /* require lisp-tools */
+/* require lisp-parse */
 /* require lisp-exec */
+/* require lisp-core */
+/* require lisp-compile */
+/* require lisp-cmp-core */
 
 var cmpsi = L.cmpsi;
 
