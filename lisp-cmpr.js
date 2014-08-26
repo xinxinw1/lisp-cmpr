@@ -7,21 +7,28 @@
 /* require lisp-parse */
 /* require lisp-exec */
 /* require lisp-core */
-/* require lisp-compile */
-/* require lisp-cmp-core */
+/* require lisp-compile-basic */
 
-var cmpsi = L.cmpsi;
+L.evlf("lib/lisp-compile-basic.lisp");
 
 var but = $("cmp");
 var src = $("src");
 var res = $("res");
 
 but.onclick = function (){
+  res.value = "";
   try {
-    res.value = cmpsi(src.value);
+    L.cal("cmpp", L.str(src.value));
   } catch (e){
-    res.value = e;
+    res.value += e;
   }
 };
 
+L.jn("*out*", function (a){
+  res.value += L.rp(L.str(a));
+  return [];
+});
+
 src.value = $.get("test.lisp");
+
+
