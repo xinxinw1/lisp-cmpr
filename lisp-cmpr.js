@@ -18,7 +18,7 @@ var res = $("res");
 but.onclick = function (){
   res.value = "";
   try {
-    L.cal("cmpp", L.str(src.value));
+    L.calsym("cmpp", L.str(src.value));
   } catch (e){
     res.value += e;
   }
@@ -31,4 +31,4 @@ L.jn("*out*", function (a){
 
 src.value = $.get("test.lisp");
 
-
+L.calsym("cmps", L.str($.get("lisp-cmp-core.lisp")));
