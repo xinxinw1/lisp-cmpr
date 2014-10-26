@@ -18,17 +18,17 @@ var res = $("res");
 but.onclick = function (){
   res.value = "";
   try {
-    L.jcal("cmpp", L.str(src.value));
+    L.jcal("cmpp", L.st(src.value));
   } catch (e){
     res.value += e;
   }
 };
 
-L.jn("*out*", function (a){
+L.djn("*out*", function (a){
   res.value += L.dat(L.str(a));
-  return [];
+  return L.nil();
 });
 
 src.value = $.get("test.lisp");
 
-L.jcal("cmps", L.str($.get("lisp-cmp-core.lisp")));
+//L.jcal("cmps", L.st($.get("lisp-cmp-core.lisp")));
