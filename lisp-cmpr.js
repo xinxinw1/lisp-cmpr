@@ -35,7 +35,7 @@ function settime(a){
 }
 
 function time(a){
-  settime($.spd1(a));
+  settime($.tim1(a));
 }
 
 src.value = $.get("test.lisp");
