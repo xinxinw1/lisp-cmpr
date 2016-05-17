@@ -9,6 +9,8 @@
 /* require lisp-core */
 /* require lisp-compile-basic */
 
+var compileFn = L.lispCompile;
+
 var but = $("cmp");
 var src = $("src");
 var res = $("res");
@@ -18,7 +20,7 @@ but.onclick = function (){
   
   time(function (){
     try {
-      L.jcal("compprocprn", L.st(src.value));
+      compileFn(L.st(src.value));
     } catch (e){
       res.value += e;
     }
@@ -39,9 +41,3 @@ function time(a){
 }
 
 src.value = $.get("test.lisp");
-
-time(function (){
-  L.evlf($.libdir + "/lisp-format/lisp-format.lisp");
-  L.evlf($.libdir + "/lisp-compile-basic/lisp-compile-basic.lisp");
-  L.jcal("compprocstr", L.st($.get("lisp-cmp-core.lisp")));
-});
