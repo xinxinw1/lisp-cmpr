@@ -9,19 +9,20 @@
 /* require lisp-core */
 /* require lisp-compile-basic */
 
-L.evlf("lib/lisp-compile-basic.lisp");
-
 var but = $("cmp");
 var src = $("src");
 var res = $("res");
 
 but.onclick = function (){
   res.value = "";
-  try {
-    L.jcal("cmpp", L.st(src.value));
-  } catch (e){
-    res.value += e;
-  }
+  
+  time(function (){
+    try {
+      L.jcal("compprocprn", L.st(src.value));
+    } catch (e){
+      res.value += e;
+    }
+  });
 };
 
 L.djn("*out*", function (a){
@@ -29,6 +30,18 @@ L.djn("*out*", function (a){
   return L.nil();
 });
 
+function settime(a){
+  $("time").innerHTML = a;
+}
+
+function time(a){
+  settime($.spd1(a));
+}
+
 src.value = $.get("test.lisp");
 
-//L.jcal("cmps", L.st($.get("lisp-cmp-core.lisp")));
+time(function (){
+  L.evlf($.libdir + "/lisp-format/lisp-format.lisp");
+  L.evlf($.libdir + "/lisp-compile-basic/lisp-compile-basic.lisp");
+  L.jcal("compprocstr", L.st($.get("lisp-cmp-core.lisp")));
+});
