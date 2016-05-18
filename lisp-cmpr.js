@@ -20,8 +20,9 @@ but.onclick = function (){
   
   time(function (){
     try {
-      compileFn(L.st(src.value));
+      L.prn(compileFn(L.st(src.value)));
     } catch (e){
+      console.log(e);
       res.value += e;
     }
   });
